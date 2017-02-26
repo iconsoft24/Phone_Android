@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--     android:weightSum="5" -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.mis_school.helloworld.MainActivity">
+
+    <!--
+    android:layout_gravity="right" จัดให้ชิดขวา ถ้า LinearLaout เป็นแนวตั้ง
+    -->
+    <!--
+         android:layout_height="0dp"
+         android:layout_weight="1"  กำหนดให้กระจายเท่ากัน
+    -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#ffaaaa"
+        android:text="Hello World!" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#aaffaa"
+        android:text="Hello World!" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#aaaaff"
+        android:text="Hello World!" />
+
+</LinearLayout>

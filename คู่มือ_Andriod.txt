@@ -1,0 +1,89 @@
+if (Build.VERSION.SDK_INT >= 21){
+	// USE API Lavel 21+
+} else{
+	// Use API Lavel 20 or below
+}
+
+- Design หน้าตาโปรแกรมใน xml
+- Code อยู่ใน java
+- การเอา xml ไป Run ใน java เรียกว่า  Inflate 
+- การ Inflate คือ 
+  setContentView(R.layout.activity_main);
+
+
+-R.<TYPE>.<NAME>
+-R.laout.activity_main   -- การเข้าถึง Resource โดย
+
+-- Patten เป็นแบบนี้ จำไว้
+        TextView tvHello = (TextView) findViewById(R.id.tvHello);
+        tvHello.setText("JDG");
+
+-- AndriodManifest.xml เป็นไฟล์ที่บอกโครงสร้างหลัก 
+-- ไฟล์ .jar ให้ใส่ไว้ใน Foldoer ชื่อ libs
+
+- Gradle คือ Build Tools 
+
+-- ถ้าใน 1project มีมากกว่า 1 app ให้ไปเพิ่มชื่อไฟล์ที่ settings.gradle
+
+
+-- โครงสร้าง build.gradle 
+apply plugin: 'com.android.application'   // เป็นการ บอกว่า mudule ตัวนี้ เป็น application หรือ  library 
+
+android {
+    compileSdkVersion 25 // เป็นการบอกว่า เราใข้ sdk ไหนมา complie 
+    buildToolsVersion "25.0.2"  // คือเลขของ Build Tools 
+    defaultConfig {
+        applicationId "com.mis_school.helloworld" // เป็นการระบุว่า app เราคือ id อะไร
+        minSdkVersion 15  // เป็นการระบุว่า app เราจะ run ต่ำสุดคือ Ver 
+        targetSdkVersion 25 // app ของเรา ให้ใช้ได้ถึง api V.25 อย่าปรับเองดื้อ ๆ
+        versionCode 1 // ver ของโปรแกรม 
+        versionName "1.0" // ver name
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner" 
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+// การที่ระบุ
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    testCompile 'junit:junit:4.12'
+}
+
+- app.iml  เป็น ไฟล์ Auto Gen เป็นการบอกว่า ไฟล์ไหนอยู่ไหน --
+
+-- เทคนิคการทำให้ คอมไฟล์ ได้เร็วขึ้น โดยไปแก้ไขไฟล์ชื่อ gradle.properties แล้ิวเพิ่ม
+org.gradle.daemon=true
+org.gradle.parallel=true
+นี้ลงไปในไฟล์นี้
+
+
+-- การออกแบบ UI ให้ออกแบบในขนาดหน้าจอ 4.5 --
+-- Acvitity , View , View Group 
+
+- ทันที่ ที่ แป๊ะ Control ลงใน xml ที่จะต้องประกาศคือ 
+   	android : layout_width, 
+	android : layout_height
+
+- match_parent (fill_parent) อิงกับแม่ คือขยายให้เต็ม fill_parent ไม่แนะนำให้ใช้คำนี้
+- wrap_content เป็นการอิงกับตัวเอง ทำให้ขนาดเท่ากับ ค่าที่อยู่ข้างใน
+- specific value คือการ fix ค่าลงไปเลย จะใช้อยู่ 2 หน่วยคือ dp และ sp 
+
+
+-- Ctl + D คือการ Copy ข้อความที่ต้องการ
+-- Ctl + Alt + L คือ การ Reformat Code 
+
+- LinearLayout คือ จะวาง โดยไม่ทับกัน จะจากแนวตั้ง หรือ แนวนอน
+- RelativeLaout คือ จะวาง control ที่ตรงไหนก็ได้ 
+- FrameLayout คือ RelativeLayout แต่จะไม่มีการอ้าง id 
+
+
+
